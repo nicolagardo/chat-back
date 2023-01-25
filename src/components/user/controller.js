@@ -4,9 +4,9 @@ import Pusher from "pusher";
 const prisma = new PrismaClient();
 
 const pusher = new Pusher({
-  appId: "1477955",
-  key: "a256e2fc09da7298ea43",
-  secret: "1925f4b94bd36173afc6",
+  appId: "1542493",
+  key: "287a0f5acd52934b3fcf",
+  secret: "98e6d02b42827a455f79",
   cluster: "us2",
   useTLS: true,
 });
@@ -51,7 +51,7 @@ export const store = async (req, res) => {
     }
 
     body.profile_url = `https://avatars.dicebear.com/api/avataaars/${body.name}.svg`;
-
+    body.password = 'password';
     const user = await prisma.user.create({ data: { ...body } });
 
     pusher.trigger("my-chat", "my-list-contacts", {
